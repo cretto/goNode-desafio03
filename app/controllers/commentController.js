@@ -38,7 +38,6 @@ module.exports = {
       }
 
       const post = await Post.findById(comment.post);
-
       const postComment = post.comments.indexOf(comment.id);
       if (postComment === -1) {
         return res.status(400).json({ error: 'Comment not found in post' });
