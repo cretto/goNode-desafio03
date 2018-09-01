@@ -2,3 +2,4 @@ Desafio03.pdf
 .vscode
 node_modules
 package-lock.json
+.env
