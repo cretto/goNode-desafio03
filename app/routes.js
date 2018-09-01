@@ -18,4 +18,28 @@ routes.post('/signin', controllers.authController.signin);
  */
 routes.use(authMiddleware);
 
+/**
+ * Users
+ */
+routes.get('/users/me', controllers.userController.me);
+routes.put('/users', controllers.userController.update);
+routes.get('/feed', controllers.userController.feed);
+
+/**
+ * Friends
+ */
+routes.post('/friend/:id', controllers.friendController.create);
+routes.delete('/friend/:id', controllers.friendController.destroy);
+
+/**
+ * Posts
+ */
+routes.post('/posts', controllers.postController.create);
+routes.delete('/posts/:id', controllers.postController.destroy);
+
+/**
+ * Likes
+ */
+routes.post('/like/:id', controllers.likeController.toggle);
+
 module.exports = routes;

@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const sendMail = require('../services/mailer');
 
 const User = mongoose.model('User');
 
@@ -12,6 +13,17 @@ module.exports = {
       }
 
       const user = await User.create(req.body);
+
+      sendMail({
+        from: 'Henrique Pereira <henrique.anacretto.pereira@email.com>',
+        to: user.email,
+        subject: `Bem-vindo ao Desafio 03 do GoNode, ${user.name}`,
+        template: 'auth/register',
+        context: {
+          name: user.name,
+          username: user.username,
+        },
+      });
 
       return res.json({ user, token: user.generateToken() });
     } catch (err) {

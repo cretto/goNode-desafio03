@@ -10,7 +10,7 @@ module.exports = async (req, res, next) => {
   }
 
   const parts = authHeader.split(' ');
-  console.log(parts);
+
   if (parts.length !== 2) {
     return res.status(401).json({ error: 'Token error' });
   }
@@ -24,7 +24,7 @@ module.exports = async (req, res, next) => {
   try {
     const decoded = await promisify(jwt.verify)(token, authConfig.secret);
 
-    req.uerId = decoded.id;
+    req.userId = decoded.id;
 
     return next();
   } catch (err) {

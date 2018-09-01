@@ -23,8 +23,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  followers: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
-  following: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
+  friends: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
   createdAt: {
     type: Date,
     default: Date.now,
