@@ -38,6 +38,12 @@ routes.post('/posts', controllers.postController.create);
 routes.delete('/posts/:id', controllers.postController.destroy);
 
 /**
+ * Comments
+ */
+routes.post('/posts/:id/comments', controllers.commentController.create);
+routes.delete('/posts/:postId/comments/:id', controllers.commentController.destroy);
+
+/**
  * Likes
  */
 routes.post('/like/:id', controllers.likeController.toggle);

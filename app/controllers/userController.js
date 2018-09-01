@@ -28,7 +28,8 @@ module.exports = {
         user: { $in: [user.id, ...friends] },
       })
         .limit(50)
-        .sort('-createdAt');
+        .sort('-createdAt')
+        .populate('comments');
 
       return res.json(posts);
     } catch (err) {
